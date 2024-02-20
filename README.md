@@ -8,6 +8,8 @@ Features
 - Contact List: Manage your contacts and chat sessions.
 - Message History: Access your past conversations anytime.
 - Notifications: Receive notifications for new messages and other important events.
+- Video call and screen sharing functionality.
+- Group chat functionality.
 
 # Prerequisites
 
