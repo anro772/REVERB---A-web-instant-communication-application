@@ -1,0 +1,54 @@
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <h1>{{member.userName}}</h1>
+    </div>
+    <div class="col-8">
+        <div class="alert alert-info pb-0" *ngIf="editForm.dirty">
+            <p><strong>Information: </strong>You have made changes. Any unsaved changes will be lost</p>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>Age:</strong>
+                    <p>{{member.age}}</p>
+                </div>
+                <div>
+                    <strong>Member since:</strong>
+                    <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" [disabled]="!editForm.dirty" form="editForm" class="btn btn-success col-12">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+                <h4 class="mt-2">Description</h4>
+                <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction"
+                    rows="6"></textarea>
+            </form>
+            <div class="col-4">
+                Change your profile picture
+                <div class="card">
+                    <div class="card-footer">
+                        <input type="file" (change)="onPhotoSelect($event)" />
+                        <button type="button" [disabled]="!photoSelected" class="btn btn-success col-12"
+                            (click)="updatePhoto()">Upload Photo</button>
+                    </div>
+                </div>
+            </div>
+            <tab heading="Edit profile">
+                <app-photo-editor [member]="member"></app-photo-editor>
+            </tab>
+        </tabset>
+    </div>
+
+</div>

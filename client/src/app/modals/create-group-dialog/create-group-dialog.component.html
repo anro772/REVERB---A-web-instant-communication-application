@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Create Group</h2>
+<mat-dialog-content>
+    <form #createGroupForm="ngForm">
+        <div class="form-group">
+            <label for="groupName">Group Name</label>
+            <input type="text" class="form-control" id="groupName" required [(ngModel)]="data.newGroup.name"
+                name="name">
+        </div>
+        <div class="form-group">
+            <label for="groupPhoto">Group Photo</label>
+            <input type="file" class="form-control" id="groupPhoto" (change)="onPhotoSelected($event)" name="photo">
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button [disabled]="!createGroupForm.valid" (click)="confirm()">Create</button>
+</mat-dialog-actions>

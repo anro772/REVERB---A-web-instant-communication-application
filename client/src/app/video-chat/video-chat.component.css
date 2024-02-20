@@ -1,0 +1,136 @@
+.video-chat__video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.video-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.video-box video {
+    border-radius: 10px;
+}
+
+.video-container {
+    position: relative;
+    width: 450px;
+    height: 450px;
+}
+
+.video-box video,
+.fallback-image {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.fallback-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.video-controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.control-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.control-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.video-controls input[type="range"] {
+    width: 50%;
+    margin-left: 10px;
+}
+
+.video-chat__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f7f7f7;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.room-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background: #fff;
+    padding: 20px;
+}
+
+.video-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f0f0f0;
+}
+
+.control-button {
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.screen-container video {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,16 @@
+<div class="member-card" *ngIf="member">
+    <div class="card-img-wrapper">
+        <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}">
+        <div class="overlay">
+            <button routerLink="/members/{{member.userName}}" [queryParams]="{tab: 'Messages'}" class="btn-icon">
+                <i class="fa fa-envelope"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-info">
+        <span class="user-status" [class.is-online]="(presenceService.onlineUsers$ | async)?.includes(member.userName)">
+            <i class="fa fa-user"></i>
+        </span>
+        <h6>{{member.userName}}</h6>
+    </div>
+</div>

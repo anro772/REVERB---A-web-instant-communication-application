@@ -1,0 +1,54 @@
+<div class="message-container">
+    <div class="message-area" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
+            <h4 class="text-center">No messages yet...</h4>
+        </div>
+
+        <div *ngIf="(messageService.messageThread$ | async)!.length > 0" class="chat">
+            <div *ngFor="let message of (messageService.messageThread$ | async)"
+                [ngClass]="{'message-box': true, 'me': message.senderUsername === this.user.username}">
+                <div *ngIf="message.senderUsername === this.user.username" class="message-content">
+                    <div class="header">
+                        <strong class="user-info">{{ message.senderUsername }} </strong>
+                        <span class="text-danger"
+                            *ngIf="!message.dateRead && message.senderUsername === this.user.username">
+                            (unread)
+                        </span>
+                        <span class="text-success"
+                            *ngIf="message.senderUsername === this.user.username && (message.dateRead)">
+                            (read {{ message.dateRead ? (message.dateRead | timeago) : 'just now' }})
+                        </span>
+                    </div>
+                    <p>{{message.content}}</p>
+                </div>
+                <img *ngIf="message.senderUsername === this.user.username" class="user-image"
+                    src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="image of user">
+
+                <img *ngIf="message.senderUsername !== this.user.username" class="user-image"
+                    src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="image of user">
+                <div *ngIf="message.senderUsername !== this.user.username" class="message-content">
+                    <div class="header">
+                        <strong class="user-info">{{ message.senderUsername }} </strong>
+
+                    </div>
+                    <p>{{message.content}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="message-input">
+        <form #messageForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off">
+            <div class="input-group">
+                <input name="messageContent" required [(ngModel)]="messageContent" type="text"
+                    class="form-control input-sm" placeholder="Send a message">
+                <div class="input-group-append">
+                    <button [disabled]="!messageForm.valid || loading" class="btn btn-primary" type="submit">
+                        Send <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div *ngIf="!isBusy()">
+    <div class="row">
+        <div class="col-4">
+            <div class="card profile-card">
+                <div class="img-container">
+                    <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.userName}}"
+                        class="card-img-top img-thumbnail">
+                </div>
+                <div class="card-body">
+                    <div class="mb-2 online-status"
+                        *ngIf="(presenceService.onlineUsers$ | async)?.includes(member.userName)">
+                        <i class="fa fa-user-circle text-success"></i> Online now
+                    </div>
+                    <div class="user-details">
+                        <strong>Username:</strong>
+                        <p>{{member.userName}}</p>
+                    </div>
+                    <div class="user-details">
+                        <strong>Age:</strong>
+                        <p>{{member.age}}</p>
+                    </div>
+                    <div class="user-details">
+                        <strong>Last active:</strong>
+                        <p>{{member.lastActive | timeago}}</p>
+                    </div>
+                    <div class="user-details">
+                        <strong>Member since:</strong>
+                        <p>{{member.created | date: 'dd MMM yyyy'}}</p>
+                    </div>
+                </div>
+                <div class="card-footer profile-card-footer">
+                    <div class="btn-group d-flex">
+                        <button *ngIf="!areFriends" (click)="sendFriendRequest()" class="btn btn-primary btn-send">Send Friend
+                            Request</button>
+                        <button (click)="selectTab('Messages')" class="btn btn-success">Messages</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <tabset class="member-tabset" #memberTabs>
+                <tab heading="Messages" (selectTab)="onTabActivated($event)">
+                    <app-member-messages [username]="member.userName"></app-member-messages>
+                </tab>
+                <tab heading="About {{member.userName}}" (selectTab)="onTabActivated($event)">
+                    <h4>Description</h4>
+                    <p>{{member.introduction ? member.introduction : 'The user does not have a description.'}}</p>
+                </tab>
+                <tab heading="Video Call" (selectTab)="navigateToVideoChat()">
+                </tab>
+            </tabset>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <h2 class="mb-0">Groups</h2>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary rounded-pill" (click)="openCreateGroupModal()">Create
+            Group</button>
+    </div>
+
+    <!-- Groups Listing -->
+    <div class="row mt-4">
+        <div class="col-lg-4 mb-4" *ngFor="let group of groups">
+            <div class="card shadow-sm rounded">
+                <img [src]="group.photoUrl" class="card-img-top img-fluid rounded-top group-photo" alt="Group photo"
+                    *ngIf="group.photoUrl">
+                <div class="card-body">
+                    <h5 class="card-title">{{group.name}}</h5>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button type="button" class="btn rounded-pill me-md-2"
+                            (click)="openInviteFriendModal(group)">Invite
+                            Friend</button>
+                        <button type="button" class="btn rounded-pill me-md-2" (click)="loadMembers(group)">See
+                            Members</button>
+                        <button type="button" class="btn rounded-pill" (click)="openGroupMessages(group)">See
+                            Messages</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="row" *ngIf="groups.length === 0">
+        <div class="col">
+            <div class="alert alert-light text-center shadow-sm rounded" role="alert">
+                <p class="mb-0">No groups found.</p>
+            </div>
+        </div>
+    </div>
+</div>

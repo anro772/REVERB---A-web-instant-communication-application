@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card mb-3 group-card text-center">
+            <div>
+                <strong class="group-name"> Group: {{group.name}}</strong>
+            </div>
+            <img class="card-img-top group-photo mx-auto d-block" [src]="group.photoUrl" alt="Group photo">
+            <div class="card-body">
+                <button type="button" class="btn rounded-pill me-md-2" (click)="openInviteFriendModal(group)">Invite
+                    Friend</button>
+                <button type="button" class="btn rounded-pill me-md-2" (click)="loadMembers(group)">See
+                    Members</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="message-container">
+            <div class="message-area" #scrollMe appScrollBottom style="overflow: scroll; height: 605px">
+                <div *ngIf="this.messages?.length === 0">
+                    <h4 class="text-center">No messages yet...</h4>
+                </div>
+
+                <div *ngIf="this.messages!.length > 0" class="chat">
+                    <div *ngFor="let message of this.messages"
+                        [ngClass]="{'message-box': true, 'me': message.senderUsername === currentUsername}">
+                        <div *ngIf="message.senderUsername === currentUsername" class="message-content">
+                            <div class="header">
+                                <strong class="user-info">{{ message.senderUsername }}</strong>
+                                <span class="text-muted ml-2">
+                                    <i class="fa fa-clock-o"></i> {{message.messageSent | timeago}}
+                                </span>
+                            </div>
+                            <p>{{message.content}}</p>
+                        </div>
+                        <img *ngIf="message.senderUsername === currentUsername" class="user-image"
+                            src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="image of user">
+
+                        <img *ngIf="message.senderUsername !== currentUsername" class="user-image"
+                            src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="image of user">
+                        <div *ngIf="message.senderUsername !== currentUsername" class="message-content">
+                            <div class="header">
+                                <strong class="user-info">{{ message.senderUsername }}</strong>
+                                <span class="text-muted ml-2">
+                                    <i class="fa fa-clock-o"></i> {{message.messageSent | timeago}}
+                                </span>
+                            </div>
+                            <p>{{message.content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-input">
+                <form #messageForm="ngForm" (ngSubmit)="sendGroupMessageInvoke()" autocomplete="off">
+                    <div class="input-group">
+                        <input name="messageContent" required [(ngModel)]="messageContent" type="text"
+                            class="form-control input-sm" placeholder="Send a message">
+                        <div class="input-group-append">
+                            <button [disabled]="!messageForm.valid || loading" class="btn btn-primary" type="submit">
+                                Send <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

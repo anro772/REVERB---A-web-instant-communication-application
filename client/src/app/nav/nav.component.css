@@ -1,0 +1,91 @@
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
+}
+
+.navbar-custom {
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.nav-item {
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+}
+
+.nav-item:hover {
+    background-color: rgba(131, 164, 212, 0.1);
+}
+
+.nav-item a {
+    transition: color 0.5s ease;
+    color: #f8f9fa !important;
+}
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    color: #f8f9fa !important;
+    font-size: 1.5rem;
+}
+
+.not-bell:hover {
+    color: #f8f9fa !important;
+    background-color: rgba(131, 164, 212, 0.1);
+    border-radius: 12px;
+}
+
+.dropdown:hover {
+    background-color: rgba(131, 164, 212, 0.1);
+    border-radius: 12px;
+}
+
+.nav-link {
+    color: #f8f9fa !important;
+}
+
+.dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
+}
+
+img {
+    max-height: 50px;
+    border-radius: 50%;
+    border: 2px solid #f8f9fa;
+    display: inline;
+}
+
+.bi {
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+.form-control {
+    border-radius: 20px;
+    border-color: rgb(163, 153, 168);
+    border-width: 2px;
+}
+
+.btn-success {
+    border-radius: 20px;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+    background-color: #218838;
+    border-color: #1e7e34;
+}

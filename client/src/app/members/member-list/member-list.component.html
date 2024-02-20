@@ -1,0 +1,32 @@
+<div class="user-list">
+    <div class="title">
+        <h2>Total Users - {{pagination?.totalItems}} found</h2>
+    </div>
+
+    <div class="search-bar">
+        <form #form="ngForm" class="d-flex mb-3" autocomplete="off">
+            <div class="search-input">
+                <input class="form-control" name="searchTerm" [(ngModel)]="searchTerm" type="text"
+                    placeholder="Search by username">
+
+            </div>
+            <div class="search-button">
+                <button (click)="searchUsers()" class="btn" type="button">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="user-grid">
+        <div class="user-card" *ngFor="let member of members">
+            <app-member-card [member]="member"></app-member-card>
+        </div>
+    </div>
+
+    <div class="pagination custom-pagination" *ngIf="pagination">
+        <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+            [maxSize]="10" [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+        </pagination>
+    </div>
+
+</div>

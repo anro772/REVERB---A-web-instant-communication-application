@@ -1,0 +1,18 @@
+.img-circle {
+    max-height: 50px;
+}
+
+.btn {
+    background-color: #5b8dc2;
+    border-color: #5b8dc2;
+}
+
+.btn:hover {
+    background-color: #719ac5;
+    border-color: #719ac5;
+}
+
+.btn.active {
+    background-color: #5778a8;
+    border-color: #5778a8;
+}

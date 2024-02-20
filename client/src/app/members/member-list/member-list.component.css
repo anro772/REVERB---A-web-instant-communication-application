@@ -1,0 +1,40 @@
+.user-list {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.user-list .title {
+    margin-bottom: 1rem;
+}
+
+.user-list .search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar .search-input,
+.search-bar .search-button {
+    margin: 0 0.5rem;
+}
+
+.search-button .btn {
+    background-color: #5778a8;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.search-button .btn:hover {
+    background-color: #719ac5;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.pagination {
+    margin-top: 1rem;
+}

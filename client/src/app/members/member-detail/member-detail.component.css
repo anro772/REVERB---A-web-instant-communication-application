@@ -1,0 +1,52 @@
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-thumbnail {
+    margin: 25px;
+    width: 80%;
+    height: 80%;
+}
+
+.profile-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card .card-body {
+    padding: 20px 25px;
+}
+
+.profile-card .card-footer {
+    padding: 10px 15px;
+    background-color: #f7f7f7;
+    border-top: none;
+}
+
+.user-details {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 2px 0;
+}
+
+.user-details:last-child {
+    border-bottom: none;
+}
+
+.online-status {
+    font-size: 0.85em;
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+.ngx-gallery {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.btn-send {
+    background-color: #5778a8;
+    border-color: #5778a8;
+}

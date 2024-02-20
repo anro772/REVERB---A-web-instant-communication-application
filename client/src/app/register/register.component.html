@@ -1,0 +1,25 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off" class="register-form">
+    <h2 class="text-center form-title">Sign up</h2>
+    <hr class="form-divider">
+
+    <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+    <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date of Birth'"
+        [maxDate]="maxDate"></app-date-picker>
+    <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email'"></app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['phoneNumber'])"
+        [label]="'Phone number'"></app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'" [type]="'password'">
+    </app-text-input>
+    <div *ngIf="registerForm.controls['password'].errors" class="text-danger">
+        <div *ngIf="registerForm.controls['password'].hasError('minlength')">Password must be at least 6 characters long.
+        </div>
+        <div *ngIf="registerForm.controls['password'].hasError('pattern')">Password must contain at least one lowercase
+            letter, one uppercase letter, and one digit.</div>
+    </div>
+    <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'"
+        [type]="'password'"></app-text-input>
+    <div class="form-buttons">
+        <button [disabled]="!registerForm.valid" class="btn btn-primary me-2" type="submit">Register</button>
+        <button class="btn btn-light" type="button" (click)="cancel()">Cancel</button>
+    </div>
+</form>

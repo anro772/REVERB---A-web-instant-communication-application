@@ -1,0 +1,27 @@
+.group-photo {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card {
+    border-radius: 5px;
+    border-color: black;
+}
+
+.btn {
+    padding: 0.25rem 1rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    margin-top: -10px;
+    align-items: center;
+    text-align: center;
+}
+
+.rounded-pill {
+    border-radius: 5px;
+    border-color: black;
+    background-color: #7897c5;
+}

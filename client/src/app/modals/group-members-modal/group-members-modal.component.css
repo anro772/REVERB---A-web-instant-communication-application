@@ -1,0 +1,33 @@
+.dialog-title {
+    font-weight: bold;
+    color: #444;
+}
+
+.dialog-content .member-item {
+    border-bottom: 1px solid #eee;
+    padding: 5px;
+}
+
+.dialog-actions {
+    text-align: right;
+}
+
+.btn {
+    background-color: #7897c5;
+    border-color: #7897c5;
+    padding: 3px 6px;
+    font-size: 0.8rem;
+}
+
+.btn:hover {
+    background-color: #3e6194;
+}
+
+.member-name {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.member-name:hover {
+    color: #0056b3;
+}

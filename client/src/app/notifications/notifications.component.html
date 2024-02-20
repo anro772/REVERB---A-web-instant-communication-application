@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3>Friend Requests</h3>
+        <div *ngFor="let friendRequest of friendRequests">
+            <div class="friend-request" [ngClass]="{'handled': friendRequest.handled}">
+                <p>{{ friendRequest.requesterUsername }} has sent you a friend request!</p>
+                <button [disabled]="friendRequest.handled" (click)="acceptFriendRequest(friendRequest)">Accept</button>
+                <button [disabled]="friendRequest.handled"
+                    (click)="declineFriendRequest(friendRequest)">Decline</button>
+                <p *ngIf="friendRequest.handled"
+                    [ngClass]="{'accepted-msg': friendRequest.accepted, 'not-accepted-msg': !friendRequest.accepted}">
+                    {{ friendRequest.accepted ? 'Accepted' : 'Not Accepted' }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Group Invitations</h3>
+        <div *ngFor="let groupInvitation of groupInvitations">
+            <div class="group-invitation" [ngClass]="{'handled': groupInvitation.handled}">
+                <p>You have been invited to join the group {{ groupInvitation.groupName }}!</p>
+                <button [disabled]="groupInvitation.handled"
+                    (click)="acceptGroupInvitation(groupInvitation)">Accept</button>
+                <button [disabled]="groupInvitation.handled"
+                    (click)="declineGroupInvitation(groupInvitation)">Decline</button>
+                <p *ngIf="groupInvitation.handled"
+                    [ngClass]="{'accepted-msg': groupInvitation.accepted, 'not-accepted-msg': !groupInvitation.accepted}">
+                    {{ groupInvitation.accepted ? 'Accepted' : 'Not Accepted' }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

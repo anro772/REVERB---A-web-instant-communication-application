@@ -1,0 +1,20 @@
+<div class="container mt-5 text-center">
+    <div *ngIf="!loggedIn">
+        <h1 class="display-4">Welcome to REVERB!</h1>
+        <p class="lead">If you do not have an account, press Register below.</p>
+        <button (click)="registerToggle()" class="btn btn-primary btn-lg">Register</button>
+    </div>
+
+    <div *ngIf="loggedIn">
+        <h1 class="display-4">Welcome back to REVERB!</h1>
+        <p class="lead">We're glad to see you again!</p>
+    </div>
+
+    <div *ngIf="registerMode" class="mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+            </div>
+        </div>
+    </div>
+</div>

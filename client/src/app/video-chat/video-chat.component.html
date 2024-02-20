@@ -1,0 +1,38 @@
+<div class="video-chat">
+    <div class="video-chat__container">
+        <h2 class="room-title" *ngIf="roomNameLocalString!=undefined&&roomNameRemoteString!=undefined">
+            Video Chat Room: {{roomNameLocalString+'-'+roomNameRemoteString}}
+        </h2>
+
+        <div class="video-chat__video-container">
+            <div class="video-box">
+                <video #localVideo autoplay muted playsinline></video>
+                <div class="video-container">
+                    <video #remoteVideo autoplay playsinline></video>
+                    <img *ngIf="!remoteVideoAvailable" class="fallback-image"
+                        src="https://res.cloudinary.com/dvo6rzso4/image/upload/v1686057185/app-net7/crossed-camera-icon-avoid-taking-photos-image-is-not-available-illustration-free-vector_vlswf2.jpg"
+                        alt="Camera not available">
+                </div>
+            </div>
+            <div class="video-controls">
+                <label for="volume-slider">Volume</label>
+                <input #volumeSlider type="range" min="0" max="1" step="0.1" value="1" id="volume-slider"
+                    (input)="setVolume(volumeSlider.value)">
+                <button class="control-button" (click)="toggleLocalVideo()">Toggle Video</button>
+                <button class="control-button" (click)="startScreenSharing2()" [disabled]="screenVideoAvailable">Start
+                    Screen
+                    Sharing</button>
+                <button class="control-button" (click)="stopScreenSharing()" [disabled]="!screenVideoAvailable">Stop
+                    Screen
+                    Sharing</button>
+            </div>
+            <div class="screen-container" [hidden]="!screenVideoAvailable">
+                <video #screenVideo autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+    <div class="chat-container" *ngIf="roomNameRemoteString&&roomNameLocalString">
+        <app-member-messages [username]="roomNameRemoteString"
+            [otherUsername]="roomNameLocalString"></app-member-messages>
+    </div>
+</div>

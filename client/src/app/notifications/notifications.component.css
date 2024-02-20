@@ -1,0 +1,13 @@
+.handled {
+    color: grey;
+}
+
+/* CSS for accepted message */
+.accepted-msg {
+    color: green;
+}
+
+/* CSS for not accepted message */
+.not-accepted-msg {
+    color: red;
+}
