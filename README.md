@@ -15,6 +15,7 @@ Features
 
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 - [Node.js](https://nodejs.org/en/download/)
+- [MySQL](https://www.mysql.com/downloads/) Used as the database server. Ensure you have MySQL installed and running on your machine.
 
 # Getting Started
 
@@ -33,24 +34,32 @@ cd server
 dotnet restore
 ```
 
-4. Run the server
+4. Ensure the connection string in appsettings.json (or appsettingsdevelopment.json for development) is correctly configured to point to your MySQL server.
+
+5. Update or create the database schema using Entity Framework migrations. First, apply migrations to update or create the database automatically.
+```sh
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
+6. Run the server
 ```sh
 dotnet run
 ```
 
-5. Navigate to the client directory
+7. Navigate to the client directory
 ```sh
 cd ../client
 ```
 
-6. Install the client dependencies
+8. Install the client dependencies
 ```sh
 npm install
 ```
 
-7. Run the client
+9. Run the client
 ```sh
 npm start
 ```
 
-8. Open your browser and navigate to http://localhost:4200
+10. Open your browser and navigate to http://localhost:4200
